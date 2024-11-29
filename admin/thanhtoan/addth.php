@@ -106,7 +106,8 @@
                 padding: 10px;
             }
         }
-        body {/-strong/-heart:>:o:-((:-h background: linear-gradient(120deg, #f6d365, #fda085);
+        body {
+            background: linear-gradient(120deg, #f6d365, #fda085);
             min-height: 100vh;
             padding: 20px;
         }
