@@ -11,7 +11,24 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
     switch ($act) {
 
         //==================== CONTROLLER DANH MỤC ========================//
-
+case 'listthanhtoan':
+            $listmuahang = loadall_muahang_with_status(); // Lấy thông tin bao gồm trạng thái
+            include "./thanhtoan/thanhtoan.php"; // Gọi view để hiển thị
+            break;
+            case 'addthanhtoan':
+                if (isset($_POST['save_order'])) {
+                    $user_id = $_POST['user_id'];
+                    $product_id = $_POST['product_id'];
+                    $quantity = $_POST['quantity'];
+                    $total_price = $_POST['total_price'];
+                    $purchase_date = $_POST['purchase_date'];
+            
+                    // Gọi hàm từ model để thêm đơn hàng
+                    insert_muahang($user_id, $product_id, $quantity, $total_price, $purchase_date);
+                    $thongbao = "Thêm đơn hàng thành công!";
+                }
+                include "./thanhtoan/addth.php";
+                break;
         case 'adddm':
             if (isset($_POST["themmoi"])) {
                 $tenloai = $_POST["tenloai"];
