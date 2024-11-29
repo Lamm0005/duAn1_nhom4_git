@@ -93,6 +93,8 @@
                     <li><a href="index.php?act=dskh">Khách hàng</a></li>
                     <li><a href="index.php?act=dsbl">Bình luận</a></li>
                     <li><a href="index.php?act=thongke">Thống kê</a></li>
+                    <li><a href="index.php?act=listthanhtoan">Danh sách thanh toán</a></li>
+              <li><a href="index.php?act=addthanhtoan">Thêm đơn hàng</a></li>
                 </ul>
             </div>
         </header>
