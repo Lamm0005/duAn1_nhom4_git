@@ -11,6 +11,7 @@ function delete_danhmuc($id)
     pdo_execute($sql);
 }
 
+
 function loadall_danhmuc()
 {
     $sql = "SELECT * FROM danhmuc";

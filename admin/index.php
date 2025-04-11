@@ -5,13 +5,39 @@ include "../model/sanpham.php";
 include "../model/taikhoan.php";
 include "../model/binhluan.php";
 include "../model/thongke.php";
+include "../model/thanhtoan.php";
+include "../model/feedback.php";
+
 include "header.php";
 if (isset($_GET["act"]) && $_GET["act"] != "") {
     $act = $_GET["act"];
     switch ($act) {
 
         //==================== CONTROLLER DANH MỤC ========================//
-
+        case 'listfeedback':
+            $listFeedback = loadAllFeedback(); 
+            include "./feedback/feedback.php"; // Gọi file giao diện hiển thị phản hồi
+            break;
+        
+        case 'listthanhtoan':
+            $listmuahang = loadall_muahang_with_status(); 
+            include "./thanhtoan/thanhtoan.php"; // Gọi view để hiển thị
+            break;
+            case 'addthanhtoan':
+                if (isset($_POST['save_order'])) {
+                    $user_id = $_POST['user_id'];
+                    $product_id = $_POST['product_id'];
+                    $quantity = $_POST['quantity'];
+                    $total_price = $_POST['total_price'];
+                    $purchase_date = $_POST['purchase_date'];
+            
+                    // Gọi hàm từ model để thêm đơn hàng
+                    insert_muahang($user_id, $product_id, $quantity, $total_price, $purchase_date);
+                    $thongbao = "Thêm đơn hàng thành công!";
+                }
+                include "./thanhtoan/addth.php";
+                break;
+            
         case 'adddm':
             if (isset($_POST["themmoi"])) {
                 $tenloai = $_POST["tenloai"];
@@ -20,29 +46,30 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
             }
             include "./danhmuc/add.php";
             break;
-        case 'xoadm':
-            if (isset($_GET["id"]) && $_GET["id"] > 0) {
-                echo "<p style='color:red;'>Bạn hãy xóa hết sản phẩm thuộc danh mục này!</p>";
-            }
-            $listdanhmuc = loadall_danhmuc();
-            include "./danhmuc/list.php";
-            break;
+        // case 'xoadm':
+        //     if (isset($_GET["id"]) && $_GET["id"] > 0) {
+        //         echo "<p style='color:red;'>Bạn hãy xóa hết sản phẩm thuộc danh mục này!</p>";
+        //     }
+        //     $listdanhmuc = loadall_danhmuc();
+        //     include "./danhmuc/list.php";
+        //     break;
         case 'suadm':
             if (isset($_GET["id"]) && $_GET["id"] > 0) {
                 $dm = loadone_danhmuc($_GET["id"]);
             }
             include "./danhmuc/update.php";
             break;
-        case 'updatedm':
-            if (isset($_POST["capnhat"]) && $_POST["capnhat"]) {
-                $tenloai = $_POST["tenloai"];
-                $id_dm = $_POST["id_dm"];
-                update_dm($id_dm, $tenloai);
-                $thongbao = "Cập nhật thành công";
-            }
-            $listdanhmuc = loadall_danhmuc();
-            include "./danhmuc/list.php";
-            break;
+            case 'updatedm':
+                if (isset($_POST['capnhat']) && ($_POST['capnhat'])) {
+                    $tenloai = $_POST['tenloai'];
+                    $id = $_POST['id_dm'];
+                    update_dm($id, $tenloai);
+                    $thongbao = "✅ Cập nhật danh mục thành công!";
+                }
+                $listdanhmuc = loadall_danhmuc();
+                include "danhmuc/list.php";
+                break;
+            
         case 'listdm':
             $listdanhmuc = loadall_danhmuc();
             include "./danhmuc/list.php";
@@ -157,6 +184,15 @@ if (isset($_GET["act"]) && $_GET["act"] != "") {
         default:
             include "home.php";
             break;
+            case 'xoadm':
+                if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+                    delete_danhmuc($_GET['id']);
+                    $thongbao = "✅ Xóa danh mục thành công!";
+                }
+                $listdanhmuc = loadall_danhmuc();
+                include "./danhmuc/list.php";
+                break;
+            
     }
 } else {
     include "home.php";

@@ -150,7 +150,8 @@ $loadbl = loadbl_binhluan(0);
                     <td>' . $idpro . '</td>
                     <td>' . $ngaybinhluan . '</td>
                 <td>
-                    <a href="' . $xoa_bl . '"><input type="button" value="Xóa" /></a>
+                    <a href="' . $xoa_bl . '"><input type="button" value="Ẩn" /></a>
+                    <a href=""><input type="button" value="Trả Lời" /></a>
                 </td>
             </tr>';
                     }

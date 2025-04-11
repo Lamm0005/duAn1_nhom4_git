@@ -98,7 +98,7 @@
         <div class="logo">
         <img src="uploads/logoo.jpg" alt="">
         </div>
-        <h1>Website bán phụ kiện điện thoại GPhone</h1>
+        <h1>Website bán phụ kiện điện thoại SSM</h1>
       </div>
       <div class="row mb menu">
         <ul>

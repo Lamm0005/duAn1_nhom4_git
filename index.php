@@ -19,17 +19,23 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
 
         case 'dangky':
             if (isset($_POST["dangky"]) && $_POST["dangky"]) {
-                $email = $_POST["email"];
-                $user = $_POST["user"];
-                $pass = $_POST["pass"];
-                $address = '';
-                $tel='';
-                $role = 0;
-                insert_taikhoan($user, $pass, $email,$address,$tel,$role);
-                $thongbao = "Đăng ký thành công . Vui lòng đăng nhập để bình luận hoặc mua hàng";
+                $email = trim($_POST["email"]);
+                $user = trim($_POST["user"]);
+                $pass = trim($_POST["pass"]);
+    
+                if (empty($email) || empty($user) || empty($pass)) {
+                    $thongbao = "Vui lòng điền đầy đủ thông tin!";
+                } else {
+                    $address = '';
+                    $tel = '';
+                    $role = 0;
+                    insert_taikhoan($user, $pass, $email, $address, $tel, $role);
+                    $thongbao = "Đăng ký thành công. Vui lòng đăng nhập để bình luận hoặc mua hàng";
+                }
             }
             include "view/taikhoan/dangky.php";
             break;
+        
         case 'dangnhap':
             if (isset($_POST["dangnhap"]) && $_POST["dangnhap"]) {// Điều kiện này kiểm tra xem nút dangnhap đã được nhấn (được gửi qua phương thức POST) hay không và đảm bảo rằng nó không phải là một giá trị rỗng hoặc false.
 
@@ -120,6 +126,8 @@ if (isset($_GET['act']) && ($_GET['act'] != "")) {
         default:
             include "view/home.php";
             break;
+            
+                
     }
 } else {
     include "view/home.php";

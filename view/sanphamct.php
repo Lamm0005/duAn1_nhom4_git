@@ -6,14 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chi tiết sản phẩm</title>
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+       
 
         body {
+
+            margin: 0;
+            
             font-family: Arial, sans-serif;
             line-height: 1.6;
             background-color: #f9f9f9;
@@ -178,11 +176,13 @@
                     <button type="submit" class="btn btn-primary" id="thanhToan">Thanh toán</button>
                 </form>
                 <form action="view/cart.php" method="POST">
-                    <input type="hidden" name="product_name" value="<?php echo $name; ?>">
-                    <input type="hidden" name="product_price" value="<?php echo $price; ?>">
-                    <input type="hidden" name="product_image" value="<?php echo $hinh; ?>">
-                    <button type="submit" class="btn btn-primary" id="cart">Thêm vào giỏ hàng</button>
-                </form>
+    <input type="hidden" name="product_id" value="<?php echo $id; ?>">
+    <input type="hidden" name="product_name" value="<?php echo $name; ?>">
+    <input type="hidden" name="product_price" value="<?php echo $price; ?>">
+    <input type="hidden" name="product_image" value="<?php echo $hinh; ?>">
+    <button type="submit" class="btn btn-primary" id="cart">Thêm vào giỏ hàng</button>
+</form>
+
 
             </div>
             <div class="mb">

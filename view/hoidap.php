@@ -14,7 +14,7 @@
             margin: 20px auto;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-
+        
         .faq h2 {
             font-size: 1.8em;
             margin-bottom: 20px;

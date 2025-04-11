@@ -12,6 +12,65 @@
             padding: 0;
             box-sizing: border-box;
         }
+            /* Style cho các ô nhập */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    background-color: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #ffa726; /* Cam sáng */
+    box-shadow: 0 0 5px rgba(255, 167, 38, 0.5); /* Hiệu ứng ánh sáng */
+}
+
+/* Style cho các nút */
+input[type="submit"],
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(45deg, #ffa726, #ffca28); /* Cam - Vàng */
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background: linear-gradient(45deg, #ff9800, #ffc107); /* Cam đậm hơn */
+    transform: translateY(-2px); /* Nổi lên khi hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Style cho checkbox */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Style cho hộp tìm kiếm */
+.box_search input[type="text"] {
+    margin-right: 5px;
+    display: inline-block;
+    width: calc(70% - 10px);
+}
+
+.box_search input[type="submit"] {
+    display: inline-block;
+    width: 30%;
+}
 
         body {
             font-family: Arial, sans-serif;
@@ -181,6 +240,12 @@
                         ?>
                     </ul>
                 </div>
+                <div class="box_search">
+            <form action="index.php?act=sanpham" method="POST">
+                <input type="text" name="keyword" id="" placeholder="Từ khóa tìm kiếm">
+                <input type="submit" name="timkiem" value="Tìm kiếm">
+            </form>
+        </div>
             </div>
             <div class="mb">
                 <div class="box_title">SẢN PHẨM BÁN CHẠY</div>
